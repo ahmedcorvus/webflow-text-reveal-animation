@@ -1,22 +1,18 @@
-/* 1. RESET: Kill the background-clip/gray logic so your span colors return */
-.transition-text, 
-.transition-text *, 
-.line {
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
-  background-image: none !important;
-  background-color: transparent !important;
-  color: inherit; /* Allows your Webflow span colors to show */
-  -webkit-text-fill-color: initial !important; /* Fixes transparency from previous method */
+/* Ensure the container is visible */
+.transition-text {
+  opacity: 1;
+  visibility: visible;
 }
 
-/* 2. THE MASK: This reveals the text without touching its color */
+/* Set the initial state of each line to 20% opacity */
 .line {
   display: block;
-  position: relative;
-  /* Mask uses 'white' to show and 'transparent' to hide */
-  -webkit-mask-image: linear-gradient(to right, white var(--line-width, 0%), transparent var(--line-width, 0%));
-  mask-image: linear-gradient(to right, white var(--line-width, 0%), transparent var(--line-width, 0%));
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
+  opacity: 0.2; 
+  transition: opacity 0.1s linear; /* Smooths out the GSAP scrub slightly */
+}
+
+/* Ensure your spans keep their Webflow colors */
+.transition-text-keyword,
+.transition-text-keyword-final {
+  color: inherit;
 }
