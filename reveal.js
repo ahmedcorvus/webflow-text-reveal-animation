@@ -9,7 +9,7 @@ function runSplit() {
   createAnimation();
 }
 
-// Update on resize
+// Re-split on window resize for responsiveness
 let windowWidth = window.innerWidth;
 window.addEventListener("resize", function () {
   if (windowWidth !== window.innerWidth) {
@@ -23,20 +23,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 function createAnimation() {
   $(".line").each(function () {
-    let tl = gsap.timeline({
+    gsap.to($(this), {
+      opacity: 1, // Animate to 100%
       scrollTrigger: {
         trigger: $(this),
-        start: "top 85%", 
-        end: "top 50%",  
-        scrub: 1,
+        start: "top 85%", // Starts fading in when line is near bottom
+        end: "top 50%",   // Reaches full opacity by middle of screen
+        scrub: true,      // Links animation progress to scroll
       },
     });
-
-    tl.fromTo(
-      $(this),
-      { "--line-width": "0%" },
-      { "--line-width": "100%", ease: "none" }
-    );
   });
 }
 
