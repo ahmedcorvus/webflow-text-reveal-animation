@@ -1,7 +1,7 @@
 let typeSplit;
 
 function runSplit() {
-  // Split the text into lines
+  // Split the text into lines to preserve your span colors perfectly
   typeSplit = new SplitType(".transition-text", {
     types: "lines",
   });
@@ -9,7 +9,7 @@ function runSplit() {
   createAnimation();
 }
 
-// Re-split on window resize for responsiveness
+// Ensure responsiveness on resize
 let windowWidth = window.innerWidth;
 window.addEventListener("resize", function () {
   if (windowWidth !== window.innerWidth) {
@@ -24,12 +24,12 @@ gsap.registerPlugin(ScrollTrigger);
 function createAnimation() {
   $(".line").each(function () {
     gsap.to($(this), {
-      opacity: 1, // Animate to 100%
+      opacity: 1, // Fade to 100%
       scrollTrigger: {
         trigger: $(this),
-        start: "top 85%", // Starts fading in when line is near bottom
-        end: "top 50%",   // Reaches full opacity by middle of screen
-        scrub: true,      // Links animation progress to scroll
+        start: "top 80%", // Starts when the line enters the view
+        end: "top 50%",   // Full opacity by the middle of the screen
+        scrub: true,
       },
     });
   });
