@@ -1,15 +1,15 @@
 let typeSplit;
 
 function runSplit() {
-  // Split the text into lines to preserve your span colors perfectly
+  // Adding 'words' prevents SplitType from deleting your nested spans
   typeSplit = new SplitType(".transition-text", {
-    types: "lines",
+    types: "lines, words", 
   });
 
   createAnimation();
 }
 
-// Ensure responsiveness on resize
+// Re-run split on window resize for responsiveness
 let windowWidth = window.innerWidth;
 window.addEventListener("resize", function () {
   if (windowWidth !== window.innerWidth) {
@@ -22,13 +22,14 @@ window.addEventListener("resize", function () {
 gsap.registerPlugin(ScrollTrigger);
 
 function createAnimation() {
+  // We still animate the lines, but the spans inside are now safe
   $(".line").each(function () {
     gsap.to($(this), {
-      opacity: 1, // Fade to 100%
+      opacity: 1, 
       scrollTrigger: {
         trigger: $(this),
-        start: "top 80%", // Starts when the line enters the view
-        end: "top 50%",   // Full opacity by the middle of the screen
+        start: "top 80%", 
+        end: "top 50%",   
         scrub: true,
       },
     });
