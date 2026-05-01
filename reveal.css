@@ -1,18 +1,19 @@
-/* Ensure the container is visible */
+/* 1. The container stays visible */
 .transition-text {
-  opacity: 1;
-  visibility: visible;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-/* Set the initial state of each line to 20% opacity */
+/* 2. Set the starting state: 20% opacity */
+/* We do NOT set 'color' here so Webflow colors stay active */
 .line {
+  opacity: 0.2;
   display: block;
-  opacity: 0.2; 
-  transition: opacity 0.1s linear; /* Smooths out the GSAP scrub slightly */
 }
 
-/* Ensure your spans keep their Webflow colors */
-.transition-text-keyword,
-.transition-text-keyword-final {
-  color: inherit;
+/* 3. Clean up: Remove any potential overrides */
+.transition-text *, .line * {
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  background-image: none !important;
 }
