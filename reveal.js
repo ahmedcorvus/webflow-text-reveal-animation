@@ -1,8 +1,7 @@
 let typeSplit;
 
 function runSplit() {
-  // Target your specific class
-  // We split by lines to get that smooth sentence-by-sentence reveal
+  // Split the text into lines
   typeSplit = new SplitType(".transition-text", {
     types: "lines",
   });
@@ -10,7 +9,7 @@ function runSplit() {
   createAnimation();
 }
 
-// Re-run on window resize to ensure line breaks are recalculated
+// Update on resize
 let windowWidth = window.innerWidth;
 window.addEventListener("resize", function () {
   if (windowWidth !== window.innerWidth) {
@@ -23,12 +22,12 @@ window.addEventListener("resize", function () {
 gsap.registerPlugin(ScrollTrigger);
 
 function createAnimation() {
-  $(".line").each(function (index) {
+  $(".line").each(function () {
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: $(this),
-        start: "top 85%", // Animation starts when line is near bottom
-        end: "top 50%",   // Animation ends when line reaches middle
+        start: "top 85%", 
+        end: "top 50%",  
         scrub: 1,
       },
     });
@@ -41,5 +40,4 @@ function createAnimation() {
   });
 }
 
-// Initial run
 runSplit();
