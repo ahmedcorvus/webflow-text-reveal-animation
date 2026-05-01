@@ -1,19 +1,22 @@
-/* Target your specific class */
-.transition-text {
-  opacity: 1;
+/* 1. RESET: Kill the background-clip/gray logic so your span colors return */
+.transition-text, 
+.transition-text *, 
+.line {
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  color: inherit; /* Allows your Webflow span colors to show */
+  -webkit-text-fill-color: initial !important; /* Fixes transparency from previous method */
 }
 
+/* 2. THE MASK: This reveals the text without touching its color */
 .line {
   display: block;
   position: relative;
-  /* This creates the 'reveal' stencil */
+  /* Mask uses 'white' to show and 'transparent' to hide */
   -webkit-mask-image: linear-gradient(to right, white var(--line-width, 0%), transparent var(--line-width, 0%));
   mask-image: linear-gradient(to right, white var(--line-width, 0%), transparent var(--line-width, 0%));
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-}
-
-/* Optional: Ensure spans inside lines keep their styling */
-.line span {
-  color: inherit;
 }
