@@ -1,0 +1,19 @@
+/* Target your specific class */
+.transition-text {
+  opacity: 1;
+}
+
+.line {
+  display: block;
+  position: relative;
+  /* This creates the 'reveal' stencil */
+  -webkit-mask-image: linear-gradient(to right, white var(--line-width, 0%), transparent var(--line-width, 0%));
+  mask-image: linear-gradient(to right, white var(--line-width, 0%), transparent var(--line-width, 0%));
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* Optional: Ensure spans inside lines keep their styling */
+.line span {
+  color: inherit;
+}
