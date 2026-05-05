@@ -6,7 +6,7 @@
 
 /* 2. Set the starting fade state */
 .line {
-  opacity: 0.2;
+  opacity: 0;
   display: block;
 }
 
