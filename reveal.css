@@ -5,19 +5,13 @@
 
 .line {
   display: block;
-  clip-path: inset(0 100% 0 0);
-}
-
-.transition-text *, .line * {
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
-  background-image: none !important;
-}
-
-.transition-text-keyword {
-  color: #123C4D !important;
-}
-
-.transition-text-keyword-final {
-  color: #000000 !important;
+  color: transparent;
+  --line-width: 0%;
+  background-image: linear-gradient(
+    90deg,
+    black var(--line-width),
+    transparent var(--line-width)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
 }
