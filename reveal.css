@@ -1,27 +1,23 @@
-/* 1. Ensure parent container is visible */
 .transition-text {
   opacity: 1 !important;
   visibility: visible !important;
 }
 
-/* 2. Set the starting fade state */
 .line {
   opacity: 0;
   display: block;
 }
 
-/* 3. Strip away all old background clipping */
 .transition-text *, .line * {
   background-clip: unset !important;
   -webkit-background-clip: unset !important;
   background-image: none !important;
 }
 
-/* 4. FORCE your Webflow colors to show up */
 .transition-text-keyword {
-  color: #123C4D !important; /* I grabbed this hex roughly from your image. Change it to your exact Webflow hex code */
+  color: #123C4D !important;
 }
 
 .transition-text-keyword-final {
-  color: #000000 !important; /* Change this to your exact black/dark gray hex */
+  color: #000000 !important;
 }
