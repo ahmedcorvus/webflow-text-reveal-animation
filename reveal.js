@@ -16,14 +16,17 @@ window.addEventListener("resize", function () {
 gsap.registerPlugin(ScrollTrigger);
 function createAnimation() {
   $(".line").each(function () {
-    gsap.to($(this), {
-      clipPath: "inset(0 0% 0 0)",
+    let tl = gsap.timeline({
       scrollTrigger: {
         trigger: $(this),
         start: "top 80%",
         end: "top 50%",
-        scrub: true,
+        scrub: 1,
       },
+    });
+    tl.from($(this), {
+      "--line-width": "0%",
+      duration: 1,
     });
   });
 }
